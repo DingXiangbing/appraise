@@ -1,0 +1,33 @@
+<extend name="Base/common"/>
+<block name="body">
+	<div class="col-xs-12">
+	   <table width="100%" border="1">
+		 <tr>
+		 <td>老师</td>
+		 <td>课程</td>
+		 <td>评分</td>
+		 <td>详细</td>
+		 <td>是否匿名('0'匿名，'1'不匿名)</td>
+		 </tr>
+		 <volist name="huizongle" id="vo" >
+		 <tr>
+		 <td>{$vo.teachernames}</td>
+		 <td>{$vo.title}</td>
+		 <td>{$vo.point}</td>
+		 <td>{$vo.content}</td>
+		 <td>{$vo.anonymous}</td>
+		 </tr>
+		 </volist>
+		</table>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+

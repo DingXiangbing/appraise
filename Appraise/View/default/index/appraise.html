@@ -1,0 +1,64 @@
+<extend name="Base/common"/>
+<block name="body">
+	<php>if($canAppraise){</php>
+    <div id="frm-post-popup " class="white-popup1 boxShadowBorder col-xs-12" style="">
+        <h2>填写评价</h2>
+        <div class="aline" style="margin-bottom: 35px"></div>
+        <div>
+            <div class="row">
+                <div style="padding: 0 10px;">
+                    <form class="form-horizontal ajax-form" role="form" action="{:U('Event/Index/doPost')}"
+                          method="post">
+                        
+                        <div class="form-group  has-feedback">
+                            <label for="point" class="control-label">评分</label>
+
+                            <div class="col-xs-10">
+                                <input id="point" name="point" class="form-control form_check" check-type="Num"  value="" placeholder="满分为5分" required />
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="content" class="control-label">评语</label>
+                            <div class="col-xs-10">
+                                <input id="content" name="content" class="form-control form_check" check-type="Text" value="" placeholder="请简单评价下该老师" required />
+                            </div>
+                            <input type="hidden" name="uid" id="uid" value="{$uid}"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2" style="margin-left: 50px;">
+                                <button type="submit" class="btn btn-primary " href="{:U('Event/Index/doPost')}" style="padding: 5px 20px 5px 32px;letter-spacing: 12px;font-size: 14px;">{:L('_SUBMIT_')}
+                                </button>
+
+                            </div>
+                            <div class="col-xs-8">
+                                <button onclick="history.go(-1);" class="btn btn-default " href="{:U('Event/Index/doPost')}" style="padding: 5px 20px 5px 32px;letter-spacing: 12px;font-size: 14px;">{:L('_RETURN_')}
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <link href="__CORE_CSS__/form_check.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__CORE_JS__/form_check.js"></script>
+    <php>}else{</php>
+    当前时间无法评价，可评价的时段如下：
+    <table width="100%" border="1">
+		  <tr>
+			<td>课程</td>
+			<td>开始时间</td>
+			<td>结束时间</td>
+		  </tr>
+		  <volist name="appraiseSessions" id="vo">
+			  <tr>
+				<td>&nbsp;</td>
+				<td>{$vo.sTime}</td>
+				<td>{$vo.eTime}</td>
+			  </tr>
+		  </volist>
+		</table>
+    <php>}</php>
+</block>
